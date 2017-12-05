@@ -22,10 +22,11 @@ public class Main {
         Transformation keithleyTransofmation = (data) -> "Transformed(" + data + ")";
         Transformation teensyTransformation = String::toUpperCase;
 
-        BlockingQueue<String> keithleyQueue = new LinkedBlockingQueue<>();
+        BlockingQueue<String> keithleyCommandQueue = new LinkedBlockingQueue<>();
+        BlockingQueue<String> keithleyDataQueue = new LinkedBlockingQueue<>();
         BlockingQueue<String> teensyQueue = new LinkedBlockingQueue<>();
 
-        DeviceThread keithleyThread = new DeviceThread(keithley, keithleyQueue);
+        DeviceThread keithleyThread = new DeviceThread(keithley, keithleyCommandQueue, keithleyDataQueue);
         keithleyThread.start();
 
         new DeviceThread(teensy, teensyQueue).start();
