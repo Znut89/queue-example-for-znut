@@ -7,9 +7,10 @@ public class DeviceThread extends Thread {
     private DeviceInterface device;
     private BlockingQueue<String> queue;
 
-    public DeviceThread(DeviceInterface device, BlockingQueue<String> queue) {
+    public DeviceThread(DeviceInterface device, BlockingQueue<String> commandqueue, BlockingQueue<String> dataqueue) {
         this.device = device;
-        this.queue = queue;
+        this.dataqueue = dataqueue;
+        this.commandqueue = commandqueue;
     }
 
     @Override
